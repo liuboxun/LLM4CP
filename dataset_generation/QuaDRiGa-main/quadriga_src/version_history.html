@@ -1,0 +1,1280 @@
+<html><head>
+
+
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"><title>QuaDRiGa Version History</title>
+  
+  <meta content="Stephan Jaeckel" name="author"></head><body>
+<h1 style="color: rgb(153, 0, 0);"><small>QuaDRiGa Version History<br>
+</small></h1><span style="font-weight: bold;"><br>
+</span>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v2.8.1</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2023-12-13)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+v2.8.1<br>
+- Bugfix: gen_cdl_model could crash on Octave<br>
+- Added a more user-friendly Makefile for +qext<br>
+<br>
+
+v2.8.0<br>
+- Added Tutorial 15<br>
+- Finalized qd_mesh documentation<br>
+<br>
+
+v2.7.2<br>
+- Better MATLAB/Octave integration for CUDA Funtions<br>
+- Added diffraction model<br>
+<br>
+
+v2.7.1<br>
+- Feature: Added qd_mesh class<br>
+- Added external c++/cuda/mex interface<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v2.6.1</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2021-07-12)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+v2.6.1<br>
+- Bugfix: [qd_builder.get_los_channels] ignored "tx_array" in some cases<br>
+<br>
+
+v2.5.19<br>
+- Bugfix: [qd_builder.get_pl] fixed a small offset in the dual and tripple-slope models caused by not considering the heights at the brek-point<br>
+- Bugfix: [qd_channel.merge] deleted additional parameters in some cases<br>
+- Feature: [qd_builder.write_conf_file] Added annotation options<br>
+- Performace: [qd_layout.kml2layout] improved reading performance for a large number of terminals<br>
+- Performace: [qd_layout.kml2layout] improved writing performance for a large number of terminals<br>
+- Updated configuration files, documentation and tutorials<br>
+<br>
+
+v2.5.18<br>
+- Bugfix: [qd_buillder.write_conf_file] Caused crash on Octave using MAC when writing complex numbers into the conf file<br>
+- Feature: [qd_channel.mat_save] Added option to save qd_channel object arrays to a mat specially formatted file<br>
+- Feature: [qd_channel.mat_load] Added option to load qd_channel object arrays from a mat file<br>
+<br>
+
+v2.5.17<br>
+- Bugfix: [qf.calc_xpr] returned NaN when XPRMAT was zero<br>
+- Bugfix: [qd_arrayant.clac_phase_diff] fixed some rare numeric instabilities<br>
+- Bugfix: [qd_builder.add_sdc] Crashed when sdc_radius was empty and NumSubPaths was set to 1<br>
+- Bugfix: [qd_layout] Defined datatype for input variables of all set functions to avoid crashes during channel generation in Octave<br>
+- Cleanup: [qd_channel] Removed old analysis functions (they are still available in the v2.4 branch)<br>
+<br>
+
+v2.5.16<br>
+- Fixed compatibility issues with older MATLAB vesions (different syntax of the "repmat"-function)<br>
+- Bugfix: [qd_builder.check_los] Crashed when adding a zero-power LOS component to multiple RX positions<br>
+<br>
+
+v2.5.15<br>
+- Feature: [qd_builder.get_los_channels] Updated function to use new array antenna interpolation methods<br>
+- Bugfix: [qd_arrayant.interpolate] Did not work with different orientations for different angles<br>
+<br>
+
+v2.5.14<br>
+- Feature: Octave 6.2 compatibility<br>
+- Feature: [qd_builder.check_dual_mobility] Remove "antenna-undefined" warning<br>
+- Bugfix: [qf.calc_angles] Crashed when using Octave without GPU acceleration<br>
+<br>
+
+v2.5.13<br>
+- Bugfix: [qd_arrayant.interpolate] Fixed several numeric stability issues for spherical interpolation method<br>
+- Performace: [qf.calc_angles] Improved accuracy for detecting multiple spatial sub-paths<br>
+<br>
+
+v2.5.12<br>
+- Bugfix: [qd_arrayant.interpolate] possible crash due to data type mismatch<br>
+- Bugfix: [qd_builder.add_sdc] Fixed division-by-zero error when BS and MT were on the same height<br>
+- Feature: [qf.calc_angles] improved accuracy for path-powers and angles, support for GPU acceleration<br>
+<br>
+
+v2.5.11<br>
+- Feature: [qf.calc_angles] Added additional output variables<br>
+- Bugfix: [qd_builder.copy] Crashed in some cases due to class mismatch in the antenna arrays<br>
+- Bugfix: [qd_builder.gen_fbs_lbs] Relaxed numeric precision requirements to allow for single-precision inputs<br>
+- Bugfix: [qd_channel.fr] Crashed in some cases when using GPU acceleration due to datatype mismatch<br>
+- Bugfix: [qd_layout.layout2kml] Incorrect positions due to numeric precision errors<br>
+- Performace: [qd_layout] Improved performance when seting positions for a large number of MTs<br>
+<br>
+
+v2.5.10<br>
+- Critical Bugfix: [qd_layout.set_scenario] Wrong LOS / NLOS states were assigned when using spatial consistency for multiple BSs<br>
+- Bugfix: [qd_layout.set_scenario] Decorrellation distance for RMa should be 60 according to 3GPP TR 38.901 v16.1.0, Table 7.6.3.1-2<br>
+- Performace: [qd_layout.set_scenario] Improved execution speed assigning parameters to a large number of terminals<br>
+- Performace: [qd_layout] Speedup for setting TX and RX positions directly in the Layout<br>
+<br>
+
+v2.5.9<br>
+- Feature: [qd_builder.add_sdc] Added method to add semi-deterministic clusters to a builder<br>
+- Feature: [qd_builder.get_pl] Added option to calculate PL without evaltrack (use [x;y;z] instead)<br>
+- Feature: [qd_buillder.gen_fbs_lbs] Added optimal input parameter to adjust the Per-cluster AS for each cluster individually<br>
+- Bugfix: [qd_builder.get_channels] crashed when GR was enables in the scenario parameters but no GR path was defined in the SSF parameers<br>
+<br>
+
+v2.5.8<br>
+- Feature: Enabled ground-reflection simulations for 3GPP-Baseline scenarios<br>
+- Bugfix: [qd_builder.gen_lsf_parameters] Removed warning for ground-reflecion being not available in 3GPP baseline (it is now available)<br>
+- Bugfix: [qd_builder.gen_ssf_parameters] Removed warning for ground-reflecion being not available in 3GPP baseline (it is now available)<br>
+- Bugfix: [qd_builder.get_channels] Removed warning for ground-reflecion being not available in 3GPP baseline (it is now available)<br>
+- Bugfix: [qd_builder.init_sos] Removed warning for ground-reflecion being not available in 3GPP baseline (it is now available)<br>
+- Bugfix: [qd_builder.get_channels] Did not correctly apply dynamic SF and KF profiles when "add_paths" was used<br>
+<br>
+
+v2.5.7<br>
+- Bugfix: [qd_builder.copy] did not correctly copy recursive handles of arrays and SOS generators<br>
+- Bugfix: [qd_builder.gen_fbs_lbs] did not process frequency-dependent cluster-delays<br>
+- Bugfix: [qd_builder.gen_lsf_from_ssf] did not handle zero-power GR path correctly<br>
+- Bugfix: [qd_builder.gen_lsf_parameters] crashed when SSF spatial consistency was disabled and absTOA was enabled<br>
+- Bugfix: [qd_builder.gen_ssf_from_scatterers] returned incorrect GR-EoA angle in some rae cases<br>
+- Bugfix: [qd_builder.init_sos] did not initialize the subpath coupling correctly when NumSubPaths differs from "scenpar"<br>
+- Bugfix: [qd_builder.split_rx] did not split array antennas correctly in case of mutiple frequencies<br>
+- Feature: [qd_builder.add_paths] New method to combine parameters of several different scenario configurations<br>
+- Feature: [qd_builder.check_los] New method to obtain the LOS state of a builder<br>
+<br>
+
+v2.5.6<br>
+- Bugfix: [qd_builder.gen_fbs_lbs] increased robustness<br>
+- Feature: [qd_builder.gen_lsf_parameters] Added option to calculate LSF parameters for arbitrary positions<br>
+- Cleanup: [qd_builder.gen_cdl_model] Updated to new "gen_fbs_lbs" method<br>
+- Cleanup: [qd_builder.get_lsp_map] Updated to new "gen_lsf_parameters" method<br>
+- Cleanup: [qd_builder.get_sf_profile] Updated to new "gen_lsf_parameters" method<br>
+<br>
+
+v2.5.5<br>
+- Bugfix: [qd_layout.layout2kml] did not write correct segment tags when used in combination with pairing<br>
+- Feature: [qd_layout] Added property "ReferenceCoord" for reading and writing KML files<br>
+- Feature: [qd_builder,check_dual_mobility] Added option to disable warning messages<br>
+- Feature: [qd_builder.gen_lsf_parameters] Generates the large-scale-fading parameters for all terminals and frequencies<br>
+- Feature: [qd_builder.gen_ssf_parameters] Generates the small-scale-fading parameters for all terminals and frequencies<br>
+- Feature: [qd_builder.gen_lsf_from_ssf] Calculates the LSF parameters from existing SSF parameters<br>
+- Feature: [qd_builder.gen_fbs_lbs] Added explicit method to generate the positions of the FBS and the LBS<br>
+- Feature: [qd_builder.gen_ssf_from_scatterers] Calculates the SSF parameters from existing FBS and LBS positions<br>
+- Cleanup: [qd_builder] removed properties "gamma" and "kappa" for the polarizaion change during scattering. Instead, the variable "xparmat" now contains the complete polarization transfer amtrix<br>
+<br>
+
+v2.5.4<br>
+- Bugfix: [qd_builder.gen_parameters] did not correctly calculate ground reflection polarization<br>
+- Bugfix: [qd_builder.gen_parameters] did not remove the first NLOS cluster delay before applying absolute TOA offsets<br>
+- Feature: [qd_sos.remove_bias] added function to remove bias from SOS generators for given positions (enforce Normal distribution)<br>
+- Feature: [qd_sos.val] added option to use different phases as input<br>
+- Feature: [qf.calc_xpr] Added heler function to calculate XPR from polarization transfer matrix<br>
+- Feature: [qd_builder.copy] Added missing copy function to builder<br>
+- Feature: [qd_builder.get_lsp_from_ssp] Added function to calculate LSPs from SSPs<br>
+- Feature: [qd_builder] Restructured property layout for better readability<br>
+<br>
+
+v2.5.3<br>
+- Bugfix: [qd_builder.get_pl] Crashed when default variables were not correcly initialized for "dual_slope" and "tripple_slope" models<br>
+- Performace: [qd_arrayant.interpolate] Vectorized array interpolation function to improve performance<br>
+- Feature: [qd_arrayant.calc_phase_diff] calculates the maximum phase difference between two samples in the arrays<br>
+<br>
+
+v2.4.2<br>
+- Critical Bugfix: [qd_builder.supported_scenarios] did not return any results on Windows due to different format of the path-variable - Backport to v2.4.0<br>
+- Bugfix: [qd_channel.merge] crashed when "qd_channel.par.pg" did not have one vale per snapshot<br>
+- Bugfix: [qd_mesh] default material setting caused negative attenuation (amplification) when a ray passed through an objectes<br>
+<br>
+
+v2.4.1<br>
+- Bugfix: [qd_builder.get_pl] returned NaNs for dual-slope PL model when MT was at the environment height<br>
+- Bugfix: [qd_builder.visualize_clusters] crashed when creating 2D-Plots<br>
+- Performace: [qd_builder.get_channels] Improved Performance by a factor of 3<br>
+- Feature: [qd_builder.gen_parameters] Added explicit generation of polarization transfer matrix<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v2.4.0</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2020-10-09)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+v2.4.0<br>
+- Bugfix: [qd_satellite.init_tracks] crashed when satellite names were not defined.<br>
+- Performace: [qd_track] removed uneccessary computation steps to increase the speed of adding or modifying users in a layout2kml<br>
+- Feature: Added configuration files for satellite links<br>
+<br>
+
+v2.3.6<br>
+- Bugfix: [qd_builder.supported_scenarios] did not find the scenario files if quadriga_src was found more than once on the MATLAB path<br>
+- Bugfix: [qd_builder.supported_scenarios] replaced filesep constructs by fullfile call in order to have the right number of file separators<br>
+- Bugfix: [qd_builder.set_scenario_table] replaced filesep constructs by fullfile call in order to have the right number of file separators<br>
+- Bugfix: [qd_layout.power_map] fixed error in the description of the method<br>
+- Bugfix: [qd_layout.set_scenario] crashed when assigning automatic LOS/NLOS/Indoor stated to layouts with only 1 MT<br>
+- Feature: [qd_channel.fr] added option to perform comutation on GPU<br>
+- Performance: [qd_channel.fr] computes up to 30% faster on CPU for large bandwidths<br>
+- Performance: [qd_layout.get_channels] Removed default builder splitting to improve performace for cases where all channels are geertated at once<br>
+- Performance: [qd_layout.get_channels_seg] builder splitting is only done when "get_channels_seg" is called the first time<br>
+<br>
+
+v2.3.5<br>
+- Bugfix: [qf.calc_angular_spread_sphere] did not consider roll angle in AS and ES output<br>
+- Bugfix: [qd_builder.supported_scenarios] did not find the scenario files if quadriga_src was the first entry on the MATLAB path<br>
+- Bugfix: [qd_builder/private/generate_paths] crashed in older matlab version (e.g. R2011b)<br>
+- Bugfix: [qd_builder/private/clst_expand] crashed in older matlab version (e.g. R2011b)<br>
+- Bugfix: [qd_track.interpolate] interpolation of the orientation was done with single precision only - leading to inaccurate results<br>
+- Feature: [qd_layout.randomize_rx_positions] added options to set a minimum distance and a fixed MT orientation<br>
+<br>
+
+v2.3.4<br>
+- Interface change: [qd_layout.get_channels] removed "update_rate" from liste of input parameters. This is now controlled by the parameter "qd_layout.update_rate"<br>
+- Bugfix: [qd_builder.get_pl] output NaNs when using dual-slope PL model and same TX and environment heights<br>
+- Bugfix: [qd_builder.split_multi_freq] did not set the "scenario" name correctly<br>
+- Bugfix: [qd_builder.split_rx] did not set the "scenario" name correctly<br>
+- Bugfix: [qd_builder.supported_scenarios] caused many warning messages in Octave<br>
+- Bugfix: [qd_channel.interpolate] poor performace due to single-precision interpolation (only 3 correct decimal digits for repeated channel generateions). Fixed by using double precision<br>
+- Bugfix: [qd_channel.merge] crashed when inupt array of "qd_channel" obejects was not correctly formatted<br>
+- Bugfix: [qd_channel.merge] did not return last snapshot for closed tracks<br>
+- Feature: [qf.slerp] Added option to use double precision instead of single precision<br>
+- Feature: [qd_builder.gen_parameters] added option to reuse parameters and onyl create missing ones<br>
+- Feature: [qd_layout.get_channels_seg] added option to generate channles sement-by-segment<br>
+- Feature: [qd_layout.get_channels] Added option to pre-initiaize the "qd_builder" opjects (needed for "get_channels_seg")<br>
+- Feature: [qd_layout] Added internal variable to store pre-initialized channel builders<br>
+<br>
+
+v2.3.3<br>
+- Bugfix: [qd_sos.val] precision was limited to 1e-6 (single precision); caused errors in opther modules due to error propagation; fixed by usind double precision<br>
+- Bugfix: [qd_builder.get_sf_profile] crashed due to missing dual-mobility flag<br>
+- Bugfix: [qd_builder.get_lsp_map] crashed due to missing dual-mobility flag<br>
+<br>
+
+v2.3.2<br>
+- Bugfix: [qd_builder.gen_parameters] wrong parameters when calling "split_rx" followed by "gen_parameters" in dual-mobility mode<br>
+- Bugfix: [qd_builder.split_multi_freq] did not process absTOA_offset variables<br>
+- Bugfix: [qd_builder.split_rx] did not work correctly in multi-frequency mode<br>
+- Bugfix: [qd_track.add_segment] did not correctly output d_min variable<br>
+- Bugfix: [qd_track.interpolate] did not update the input track when no output variable was requsted<br>
+- Feature: [qd_satellite.read_tle] Added method to read TLE data<br>
+- Feature: [qd_satellite] Added option to calculate and visualize satellite positions in real time<br>
+- Updated documentation<br>
+<br>
+
+v2.2.11<br>
+- Bugfix: [qd_track.add_segment] Segment adding failed when projection was at the edge of a track segment but still within threshold<br>
+- Feature: [qd_arrayant.import_pattern] Re-added method and added interpolation function for the azimuth grid.<br>
+<br>
+
+v2.2.10<br>
+- Feature: Added InF model from 3GPP TR 38.901 V16.1.0<br>
+- Feature: [qd_builder.gen_parameters] changed sub-path splitting such that only the 2 stongest clusters are split when spatial consistency is not used<br>
+- Feature: [qd_builder]  Added absolute TOA model from 3GPP TR 38.901 V16.1.0, Sec. 7.6.9<br>
+- Feature: [qd_layout.layout2kml] Added option to write abolute heights<br>
+<br>
+
+v2.2.9<br>
+- Bugfix: [qd_arrayant.xml_read] crashed when values were given in exponential notation<br>
+- Bugfix: [qd_builder/generate_paths] created wrong angles when the Tx was at high elevation<br>
+- Bugfix: [qd_builder.visualize_clusters] wrong axis scaling for high elevation angles<br>
+- Bugfix: [qd_track.add_segment] added segments to multiple tracks in a track array<br>
+- Bugfix: [qd_track.interpolate] cause division by zero and NaN output using "time" interpolation and sample rates outside the movemelt profile range<br>
+- Feature: [qd_arrayant.beam_explorer] Added console output several parameters describing the antenna when clicked at the image<br>
+- Feature: [qd_channel.clear_par] Added option to remove selected "par"-entries<br>
+- Feature: [1d_channel.swap_tx_rx] Added method to replace tx and rx positions on the output channel<br>
+<br>
+
+v2.2.8<br>
+- Bugfix: [qd_builder.split_multi_freq] crashed when splitting a builder with an empty kappa variable<br>
+- Bugfix: [qd_channel.propsim_export_v2] Did not write source file to SMU file when using asc_raw output format<br>
+- Bugfix: [qd_channel.quantize_delays] created false delays when running on already quantized channels<br>
+- Feature: [qf.regression] Added option to roudnd output to x.2 and x.5<br>
+- Feature: [qd_builder.split_rx] Added option to split builders for separate RX locations<br>
+- Feature: Updated parameters for 3GPP TR 37.855 V2V simulations<br>
+<br>
+
+v2.2.7<br>
+- Bugfix: [qd_builder/private/solve_multi_bounce_opti] did not use the correct minimum distance when calculating the FBS and LBS positions<br>
+- Bugfix: [qd_track.interpolate] crashed when interpoalting zeros-length tracks<br>
+- Feature: [qd_channel.quantize_delays] added option to fix delays<br>
+- Feature: [qd_builder.gen_cdl_model] Added 3GPP TR 37.885 V2X CDL models<br>
+- Feature: [qd_builder.get_channels] now saves the update rate<br>
+- Feature: [qd_builder.set_fbs_lbs] added option to import LBS and FBS positions and adjust LSPs and SSPs accordingly<br>
+- Feature: [qd_layout] now allows to manuallly enable dual-mobility (i.e. for spatially consistend BSs)<br>
+- Performance: [qd_channel.propsim_export_v2] does not write duplicate files for return channels<br>
+<br>
+
+v2.2.6<br>
+- Bugfix: [qf.acdf] did not calculate quantiles for single dimension input<br>
+- Bugfix: [qd_builder.check_dual_mobility] did not process rx locations correctly when there was a single rx track but multiple rx positions<br>
+- Bugfix: [qd_builder.get_channels] did not return the correct cluster angles and powers if there were zero-power paths<br>
+- Bugfix: [qd_layout] changed the default track length to 0<br>
+- Bugfix: [qd_track.interpolate] could have an inconsistent number of output snapshots for the same input values (track lenght and samplerate)<br>
+- Bugfix: [t01_handles_handels_handles] calculation of the received power was wrong<br>
+- Feature: [qd_channel.calc_cap_multiuser] added option to calculate the per-stream SINR<br>
+- Feature: [qd_channel.propsim_export_v2] added option to write channel coefficients without normalization<br>
+- Feature: [qd_track.calc_orientation] added option to correctly change the orientation in 3D coordinates<br>
+- Feature: Added calibration tutorial for 3GPP TR 38.821 (non-terrestrial networks)<br>
+<br>
+
+v2.2.5<br>
+- Performance: [qd_channel.split_tx] Removed output of zero-power paths from split channels<br>
+- Feature: [qd_channel.split_rx] Splits channel arrays based on receive antenna indices<br>
+- Feature: [qd_channel.propsim_export_v2] Added option to return quantized channel coefficients<br>
+<br>
+
+v2.2.4 <br>
+- Performace: [qd_builder.get_channels] does not process paths with zero-power to reduce computing and memory reuirements<br>
+- Feature: [qd_layout.kml2layout] added option to set a specific reference coordinate different from the one in the KML file<br>
+<br>
+
+v2.2.3<br>
+- Bugfix: [qd_builder.get_sf_profile] created random shadowing profile when there was no qd_builder.sos object<br>
+- Bugfix: [qd_builder.get_channels] caused NaNs when there was no qd_builder.sos object<br>
+- Bugfix: [qd_channel.interpolate] crashed when there was a scalar PG value<br>
+- Bugfix: [qd_layout.kml2layout] did not rorreclty read closed tracks due to numeric precision error<br>
+- Bugfix: [qd_layout.layout2kml] did not write some non-default orientation values to the file<br>
+<br>
+
+v2.2.2<br>
+- Bugfix: [qf.calc_angles] Caused division by 0 message if there were zero-power paths in the channel opject<br>
+- Bugfix: [qd_layout.kml2layout] Crashed when there were no segments defined in the KML file<br>
+- Bugfix: [qd_layout.kml2layout] Crashed when there was a single TX antenna and multiple RX antennas defined for only a single frequency<br>
+- Performance: [qf.calc_ant_rotation] Added option to use single precision for up to 30% performance increase<br>
+- Performance: [qd_arrayant.combine_pattern] Added option to use single precision for up to 30% performance increase<br>
+- Performance: [qd_arrayant.interpolate] Various performance enhancements<br>
+- Performance: [qd_builder.get_los_channels] Increased performance for single precision by removing unneccessary typecasts<br>
+- Feature: [qd_arrayant] Added antenna type 'testarray' - an antenne with optimal angular resolution for QuaDRiGa testing<br>
+- Feature: [qd_builder] Added subpath mapping method 'Laplacian'<br>
+- Feature: [qd_builder.gen_cdl_model] Added 3GPP 38.901 CDL and TDL models<br>
+<br>
+
+v2.2.1<br>
+- Bugfix: [qd_layout.copy] crashed when copying a layout with multiple transmitters or receivers<br>
+- Bugfix: [qd_builder.get_pl] created wrong SF scaling coefficien when SF was frequency-dependent<br>
+- Bugfix: [qf.log2dfit] crashed when negative values for a or b were entered<br>
+- Bugfix: [qd_channel.calc_tx_rx_distance] crasehd when tx was moving<br>
+- Bugfix: [qd_builder.check_dual_mobility] crashed when tx and rx were co-located and had only 1 snapshot<br>
+- Bugfix: [qd_builder.get_channels] did not update rx patterns in some rare cases<br>
+- Bugfix: [qd_channel.merge] crashed when there were more than 65535 channel segments<br>
+- Bugfix: [qd_channel.interpolate] terminal positions were inaccurate for long tracks due to single precision interpolation<br>
+- Bugfix: [qd.track.interpolate] inaccurate positions for long tracks due to single precision interpolation<br>
+- Performance: [qd_arrayant.wrap_grid] Performace improvements<br>
+- Performance: [qd_channel.quantize_delays] improved performace and added option to select subset of channels<br>
+- Feature: [qd_arrayant.generate] Added option to generate multibeam parabolic antennas<br>
+- Feature: [qf.interp] Added option to use double precision for interpolation<br>
+- Feature: [qd_arrayant.calc_beamwidth] Added method to calculate the per-elemet beamwidth and pointing angle<br>
+- Feature: [qd_arrayant.rotate_pattern] Added option to rotate patterns without grid interpolation<br>
+- Feature: [qd_arrayant.set_grid] Added option to disable interpolation<br>
+- Feature: [qd_builder.init_sos] Added option to disable spatial consistency<br>
+- Feature: [qd_layout.get_channels] now writes update rate to channel objectes par-struct<br>
+- Feature: [qd_layout.set_scenario] added 5G-ALLSTAR scenarios<br>
+- Feature: [qd_simulation_parameters] added option to disable spatial consistency<br>
+- Update: Renames satellite configuration files to 5G-ALLSTAR<br>
+- Update: Adjusted 5G-ALLSTAR DenseUrban parameters after resimulation<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v2.2.0</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2019-06-27)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+v2.1.30<br>
+- Bugfix: [qd_arrayant.xml_write] Angular grid sampling was wrong for large angle offsets<br>
+<br>
+
+v2.1.29<br>
+- Bugfix: [qd_arrayant.rotate_pattern] did not correctly sample the angles for non-uniform angle grids<br>
+- Bugfix: [qf.log2dfid] Crashed when not showing a figure<br>
+- Bugfix: [qd_arrayant.xml_write] Adjusted sampling grid to variable angles<br>
+- Bugfix: [qd_layout.kml2layout] Added option to read numbers in exponential format<br>
+- Bugfix: [qd_layout.kml2layout] Changed coordinate transformation procedure to cover the whole earth<br>
+- Bugfix: [qd_layout.layout2kml] Changed coordinate transformation procedure to cover the whole earth<br>
+- Bugfix: [qd_sos] Crashed when setting different decorrelation distances for TX and RX<br>
+- Bugfix: [qd_sos.generate] Random sampling of the unit sphere had an additional factor of pi<br>
+- Performace: [qd_layout.init_builder] Reduced execution time when adding many transmitters<br>
+- Performace: [qd_layout] Reduced execution time when adding many transmitters<br>
+- Feature: [qd_layout.set_scenario] Added default decorrelation distanced for TX and RX; added Satellite scenarios<br>
+- Feature: [qd_layout.visualize] Shows LOS-TXs in green when only a singe Rx is selected<br>
+- Cleanup: [qd_builder.gen_parameters] Added error message when LSP xcorr-matrix is not positive definite<br>
+- Cleanup: [qd_arrayant.generate] Restructured method<br>
+- Cleanup: [qf.interp] Added option to provide empty variable for "y" when using 1D interpolation<br>
+<br>
+
+v2.1.28<br>
+- Feature: [qd_builder.write_conf_file] Added method to write scenario configuration files<br>
+- Feature: [qd_builder] Added support for LSPs depending on: TX-RX-distance, TX-height and TX elevation<br>
+- Feature: [qf.calc_angular_spread_sphere] Added function to calculate spherical angular spreads<br>
+- Feature: [qf.log2dfit] Added function for parameter fitting<br>
+- Feature: [qd_arrayant.rotate_pattern] Added support for non-uniform angular grids<br>
+- Bugfix: [qd_track] Using the underscore in the track name might lead to wrong results, added error message<br>
+<br>
+
+v2.1.27<br>
+- Feature: [qd_builder] Extended the scenario table with height, distance and elevation dependence for the LSPs<br>
+- Feature: [qd_builder.write_conf_file] Added method to write configuration files<br>
+- Feature: [qf.log2dfit] Logarithmic curve fitting with two variables<br>
+- Feature: [qf.calc_angular_spreads_sphere] Calculates the angular spread on a shere in [rad]<br>
+- Feature: [qd_builder.get_pl] Added satellite path-loss models<br>
+- Bugfix: [qd_builder/generate_lsf] returned NaN when bs-height or elevation angle was 0<br>
+<br>
+
+v2.1.26<br>
+- Bugfix: [qf.calc_angles] returned wrong results for non-zero array antenna element positions<br>
+- Bugfix: [qd_layout.set_satellite_pos] calculation for distance between user terminal and satellite was incorrect<br>
+<br>
+
+v2.1.25<br>
+- Feature: [qd_arrayant.calc_element_position] Calculates the element positions from the antenna patterns<br>
+- Feature: [qd_layout] Added option to perfrom multi-frequency simulations for 3GPP baseline simulations<br>
+- Bugfix: [qd_arrayant.visualize] crashed on ovtave 4.4.0<br>
+- Bugfix: [qd_track.interpolate_movement] crashed when no interpolation method was specified<br>
+- Bugfix: [qd_builder.gen_parameters] Changes the angular mapping function for 3GPP baseline simulations due to calibration mismatch<br>
+- Performance: [qf.calc_angles] Slight performance enhancements<br>
+- Performance: [qd_arrayant.interpolate] Performance enhancements<br>
+<br>
+
+v2.1.24<br>
+- Bugfix: [qd_builder/generate_subpaths] did not apply Lapalcialn subpath angle offsets and inter cluster DS<br>
+- Bugfix: [qd_builder.gen_parameters] long computing time for large delay values<br>
+- Bugfix: [qd_layout.set_scenario] 3GPP Indoor office LOS probabilities were incorrect<br>
+- Bugfix: 3GPP 38.901 Configuration files for NLOS and O2I did not account for zero-power LOS path in QuaDRiGa<br>
+- Updated tutorials 7-9. <br>
+<br>
+
+v2.1.23<br>
+- Bugfix: [+qd.calc_angles] Return wrong results when antenna had no polarization resolution.<br>
+- Bugfix: [qd_layout/kmlread] KML parser did not process multiple entries in pairing when using the description field<br>
+- Bugfix: [qd_layout.kml2layout] added space before ACF name<br>
+- Feature: [qd_layout.kml2layout] Added input variable to enable / disable segment splitting.<br>
+- Feature: Added vehicular array antennas<br>
+- Feature: Added parameters for vehicular side link from 3GPP TR 37.855 V15.1.0 (2018-09)<br> 
+<br>
+
+v2.1.22<br>
+- Update: updated documentation of all classes and methods<br>
+- Feature: [qd_arrayant.set_grid] Added option to calculate the MSE when interpolating the array antenna back to the original grid<br>
+- Bugfix: [qd_arrayant.beam_explorer] did not consider element positions.<br>
+- Bugfix: [qd_arrayant] Removed "calc_array_resolution" method (false results)<br>
+- Bugfix: [qd_layout] Removes "get_channels_seg" method (false results)<br>
+- Bugfix: [qd_arrayant.set_grid] did occasionally omit angels due to numeric precision errors<br>
+<br>
+
+v2.1.21<br>
+- Bugfix: [qd_channel.split_snap] did not split tx positions for dual-mobility channels<br>
+- Feature: [qd_builder.gen_parameters] added option to generate LSF and SSF separately<br>
+- Feature: [qd_builder] Added backwards-compatibility to call methods "gen_ssf_parameters" and "gen_lsf_parameters"<br>
+<br>
+
+v2.1.20<br>
+- Bugfix: [qd_track] "par" struct was invisible. This led to the O2I loss not being accessible in the builder objects.<br>
+- Bugfux: [qd_channel.calc_XPR] crashed when the antenna pattern contained zeros<br>
+- Update: [+qf] Added documentation to package functions. Remove some rarely used functions (they are not private to the calling classes.)<br>
+- Performance: [qd_arrayant.interpolate] reduced required computation time<br>
+<br>
+
+v2.1.19<br>
+- Bugfix: [qd_channel.combine_tx_rx] crashed when duplicate tx or rx names were provided. Now shows warning message and only uses first channel.<br>
+- Bugfix: [+qf.interp] returned NaNs if duplicate values were given in input vectors x or y.<br>
+- Bugfix: [+qf.acdf] crashed when there were more than 2 dimensions and averaging was enabled.<br>
+- Bugfix: [qd_arrayant.interpolate] used incorrect azimuth angles at en elevation of 90 degree.<br>
+- Feature: [qd_arrayant.set_grid] Calling with no parameters now interpolates the pattern to 1 degree accuracy.<br>
+- Performace: [qd_layout.get_channels] limits maximum update factor to 1 if update rate results in a smaller sample density than specified in the simulation parameters.<br>
+<br>
+
+v2.1.18<br>
+- Performance: [qf.calc_angles] Improved performance and robustness<br>
+- Performance: [qd_arrayant.interpolate] Improved performance and robustness<br>
+<br>
+
+v2.1.17<br>
+- Bugfix: [qd_arrayant.interpolate] Improved accuracy for low-resolution patterns (could have significant interpolation artefacts)<br>
+- Feature: [qd_arrayant.beam_explorer] Added function to visualize beam forming performance of an array antenna<br>
+<br>
+
+v2.1.16<br>
+- Bugfix: [qd_builder.generte_GR_parameters] Removed error message for low heights<br>
+- Bugfix: [qd_builder.get_pl] Rx or Tx heights of 0 causes NAN values for NLOS path loss<br>
+<br>
+
+v2.1.15<br>
+- Bugfix: [qd_arrayant.xml_write] wrote -0 valued to XML file. <br>
+- Bugfix: [qd_layout.layout2kml] did not write Baseline3GPP field<br>
+- Bugfix: [qd_layout.kml2layout] did not read Baseline3GPP field<br>
+- Bugfix: [qd_layout.kml2layout] Autocorrelation function name had an additional space ' ' character.<br>
+- Bugfix: [qd_layout] Fixed error in object indexing when only single tx or rx was defined (Ocatave only bug).<br>
+- Bugfix: [qd_track.interpolate] deleted movement profile when using "distance" interpolation<br>
+- Bugfix: [qd_track.split_segment] could get stuck in endless loop when segment end coincided with track end.<br>
+- Feature: [qd_layout.get_channels] Added warning message when using 3GPP baseline simulations with mobility.<br>
+<br>
+
+v2.1.14<br>
+- Feature: [qd_builder.gen_parameters] Saves FBS and LBS to builder objects<br>
+- Bugfix: [qd_builder.split_multi_freq] Returned incorrect results if called on a single-frequency builder<br>
+- Bugfix: [qd_builder/private/generate_paths] Returned complex-valued delays when a minimum delay spread was reached by the ground reflection path<br>
+<br>
+
+v2.1.13<br>
+- [qd_builder] Renamed "gen_ssf_parameters" to "gen_parameters"<br>
+<br>
+
+v2.1.12<br>
+- [qd_builder] Restructured parameter generation methods<br>
+- [qd_builder] Removed "gen_lsf_parameters" and "gen_lsp_val". They are now part of "gen_parameters"<br>
+<br>
+
+v2.1.11<br>
+- Removed manual LSF parameter interface from [qd_track] and subsequent functionality (due to maintenance overhead and incompatibility with new features)<br>
+<br>
+
+v2.1.10<br>
+- Feature: [qd.builder.init_sos] Added method to initialize all SOS generators simultaneously<br>
+- Feature: [qd_simulation_parameters] Added 3GPP baseline option, removed switch for spherical waves and polarization rotation<br>
+- Feature: [qd_simulation_parameters] Disable multi-frequency simulations for 3GPP baseline option, show warning<br>
+- Feature: [qd_builder] Updated cluster delay and angle generation procedure<br>
+- Feature: [qd_builder] Disable ground reflection for 3GPP baseline, show warning<br>
+- Bugfix: [qd_sos.val] Updated Normal to Uniform transformation<br>
+<br>
+
+v2.1.9<br>
+- Bugfix: [qd_arrayant.sub_array] did not set center frequency.<br>
+- Bugfix: [qd_arrayant.xml_write] did not write the coupling matrix correctly<br>
+- Feature: [qd_simulation_parameters] added option to select the ACF type for the random generators<br>
+- Performace: [qd_sos.set_acf] Updated sinusoid coefficients (better approximation accuracy)<br>
+<br>
+
+v2.1.8<br>
+- Bugfix: [qd_layout] Default tx names had two digits only. This could change the channel order after merging. Fixed by setting default Tx names to 4 digits.<br>
+<br>
+
+v2.1.7<br>
+- Feature: [qd_sos] Added new features to SOS correlation model<br>
+<br>
+
+v2.1.6<br>
+- Performace: [qd_channel.quantize_delays] is now 10 times faster and required much less memory.<br>
+<br>
+
+v2.1.5<br>
+- Bugfix: [+qf.calc_angles] crashed when only vertical polarization was used<br>
+- Bugfix: [qd_arrayant.copy] did not copy the center frequency setting<br>
+- Bugfix: [qd_arrayant.interpolate] crashed if there was only one elevation or azimuth angle<br>
+- Bugfix: [qd_builder.get_channels] did not process KF and SF values that were set manually<br>
+<br>
+
+v2.1.4<br>
+- Feature: [qd_arrayant] Added feature to read and write antenna data from/to XML files.<br>
+- Feature: [qd_layout] Added feature to read and write layouts to KML<br>
+- Feature: [qd_track.add_segment] Added method to add segments and automatically add points<br>
+- Feature: [quadriga_kml] Added option to run QuaDriga based on KML files<br>
+- Bugfix: [qd_builder.get_pl] returned NaNs for dual-slope when the MT or BS height was 0.<br>
+- Bugfix: [qd_channel.combine_tx_rx] crashed when not all MIMO sublinks were provided.<br>
+- Bugfix: [qd_channel.combine_tx_rx] did not consider TX speed when calculating the sample density<br>
+- Bugfix: [qd_channel.hdf5_save] Did not save tx_position for dual-mobility<br>
+- Bugfix: [qd_channel.propsim_export] crashed when not all MIMO sublinks were provided.<br>
+- Bugfix: [qd_layout.copy] crashed due to interface changes<br>
+- Bugfix: [qd_layout.get_channels] crashed when there were unequal track lenghts in single-mobility setup<br>
+- Bugfix: [qd_track.correct_overlap] did not work correctly when there were too few points<br>
+- Bugfix: [qd_track.split_segment]  did not work correctly when there were too few points<br>
+<br>
+
+v2.1.3<br>
+- Bugfix: [qd_channel.interpolate] ignored Tx position in dual-mobility scenarios when calculating the threshold for the segment detection.<br>
+- Bugfix: [qd_channel.interpolate] did not process "snapshot" based distance values. This is needed when only orientation changes (e.g. radar) are used.<br>
+- Bugfix: [qd_layout.gen_lsf_parameters] crashed when links were disabled in "qd_layout.paring".<br>
+- Bugfix: [qd_layout.get_channels] crashed when simulation time of dynamic channels was incnsistent.<br>
+- Bugfix: [qd_layout.get_channels] did not process devices that only changes orientation, but not position.<br>
+- Bugfix: [qd_layout.set_pairing] had wrong default setting for the "check_parfiles" input variable.<br>
+- Bugfix: [qd_layout.set_scenario] did not set single scenarios correctly when "tx" or "rx" subsets were selected.<br>
+- Bugfix: [qd_track.interpolate] did not interpolate static tracks.<br>
+- Bugfix: [qd_track.interpolate] did not return correct snapshot indices in "snapshot" mode.<br>
+- Bugfix: [qd_track] removed "orientation" property when changing the number of snapshots.<br>
+- Bugfix: [qd_track] crashed when setting track parameters (e.g. DS) with zero-value.<br>
+- Bugfix: [qd_track.set_speed] did not work correctly for zero-length tracks.<br>
+- Feature: [qd_layout.set_pairing] disables links where Tx and Rx are at the same position.<br>
+- Feature: [qd_layout.visualize] now displays Tx names on the left of the icon to avoid overlap with Rx names.<br>
+<br>
+
+v2.1.2<br>
+- Bugfix: [qd_builder.parse_positions] did not correctly process closed tracks<br>
+- Feature: [qd_builder.check_dual_mobility] now checks for Tranceivers sharing the same location.<br>
+<br>
+
+v2.1.1<br>
+- Bugfix: [qd_channel.merge] produced wrong order of birth-death processes.<br>
+- Bugfix: [qd_layout.set_scenario] fixed error message for unsupported scearnios.<br>
+- Bugfix: [qd_channel.interpolate] removed unused variables.<br>
+- Bugfix: [qd_layout.init_builder] used wrong Rx antenna indexing, causing occasional crashed and wrong results.<br>
+- Feature: [qd_layout] Added hidden "track" property to support legacy scripts<br>
+<br>
+
+v2.1.0-707<br>
+- Bugfix: [qd_layout.get_channels] crashed when multiple tracks had same name; added error message<br>
+<br>
+
+v2.1.0-703<br>
+- Bugfix: [qd_arrayant.generate] did not set the center-frequency for some array types correctly.<br>
+- Bugfix: [qd_channel.merge] did not process Tx positions.<br>
+- Feature: [qd_channel.merging_cost_fcn] Performance optimization<br>
+- Bugfix: [qd_layout.get_channels] crashed if Tx and Rx track had the same name.<br>
+- Feature: [qd_layout.set_scenario] Added UD2D LOS probability scenarios<br>
+<br>
+
+v2.0.2-702<br>
+- Feature: Added config files for urban D2D scenarios. <br>
+- Bugfix: [qd_channel.interpolate] crashed when using single-antenna channels and cubic interpolation; improved path tracking<br>
+- Bugfix: [qd_channel.merging_cost_fcn] did not correctly consider ground reflection<br>
+- Bugfix: [qd_layout.get_channels] channel interpolation did not work for closed tracks; track objects in layout were changed<br>
+- Bugfix: []qd_track.get_subtrack] created inconsistent results for closed tracks<br>
+- Bugfix: [qd_track.interpolate] did not update movement profile after interpolation (causing crash in channel interpolation)<br>
+<br>
+
+v2.0.2-701<br>
+- Feature: [+qf.slerp] Added option to interpolate multiple inputs at the same time<br>
+- Bugfix: [+qf.slerp] Typecast errors, performance improvements<br>
+- Bugfix: [qd_channel.interpolate] Now using SLERP for phase interpolation, reduction of interpolation artefacts in Doppler spectrum<br>
+- Bugfix: [qd_layout.get_channels] Now interpolates tracks and channel coefficients correctly<br>
+<br>
+
+v2.0.1-700<br>
+- Feature: [+qf.slerp] Added function for spheric linear interpolation<br>
+- Feature: [qd_track.interpolate] Added snapshot-based track interpolation for dual-mobility<br> 
+- Bugfix: [qd_track.interpolate] Fixed incorrect interpolation results for the orientation<br>
+- Bugfix: [qd_track] Did not indicate closed tracks for static positions with changing orientation<br>
+<br>
+
+v2.0.1-699<br>
+- Bugfix: [+qf.interp] Output was cast to single precision<br>
+- Bugfix: [qd_layout.parse_positions] Did not process orientation property <br>
+- Feature: [qd_track.interpolate] Added time-based track interpolation for dual-mobility<br>
+<br>
+
+v2.0.1-698<br>
+- Bugfix: [qd_builder.gen_lsf_parameters] Crached when using single-mobility with O2I penetration loss<br>
+- Bugfix: [qd_layout] Incorrect initialization of "qd_track"-objects could lead to errors in the processing<br>
+- Bugfix: [qd_track] Incorrect initialization of "qd_track"-objects could lead to errors in the processing<br>
+- Bugfix: [qd_layout.set_pairing] Crashed when using power / sf mode<br>
+<br>
+
+v2.0.1-696<br>
+- Bugfix: [qd_builder.check_dual_mobility] Added orientation support<br>
+- Bugfix: [qd_builder.get_channels] Added orientation support<br>
+- Bugfix: [qd_builder.get_los_channels] Added orientation support<br>
+<br>
+
+v2.0.1-695<br>
+- Feature: [qd_track] Added orientation property, removed ground and height direction<br>
+- Feature: [+qf.calc_ant_rotation] Completely rewritten to match standard mathematical definitions<br>
+- Feature: [qd_arrayant.rotate_pattern] Updated to use "+qf.calc_ant_rotation"<br>
+- Feature: [qd_layout.power_map] Now uses track orientations<br>
+- Performance: [qd_builder.get_los_channels] Removed redundant computations<br>
+- Performance: [qd_builder.check_dual_mobility] Removed redundant computations (currently breaks)<br>
+<br>
+v2.0.1-694<br>
+- Bugfix: [qd_track] Setting the ground-direction deleted already existing height-direction data<br>
+- Bugfix: [qd_builder.check_dual_mobility] Cracked when using multi-Tx and single-Rx<br>
+- Bugfix: [qd_builder.get_channels] Crashed when disabling spherical waves<br>
+- Bugfix: [qd_builder.get_pl] Crashed when not supporting a tx-track<br>
+- Performance: [qd_builder] Improved calculation of frequency-dependant LSPs<br>
+- Performance: [qd_sos.val] Some performance improvements<br>
+- Feature: [qd_builder.get_los_channels] Added support for elevation polarization rotation and dual-mobility<br>
+- Feature: [+qf.calc_ant_rotation] Added option for using different rotation angles<br>
+<br>
+v2.0.1-693<br>
+- Bugfix: [+qf.eqo] Typecast error (only affects octave)<br>
+- Bugfix: [qd_builder.check_dual_mobility] Fixed some inconsistencies<br>
+- Bugfix: [qd_builder.gen_lsf_parameters] Fixed some inconsistencies<br>
+- Bugfix: [qd_builder] simpar property was not correctly initialized in the constructor<br>
+- Bugfix: [qd_builder.visualize_clusters] did not select the correct tx position<br>
+- Feature: [qd_builder.generate_paths] Added option for correlated AoD / AoD for closely spaced UEs<br>
+- Feature: [qd_builder.get_lsp_val] Added option for correlated AoD / AoD for closely spaced UEs<br>
+- Feature: [qs_sos.acfi] Interpolation tool for the ACF<br>
+<br>
+v2.0.1-692<br>
+- Feature: [+qf.calc_ant_rotation] Added function to calc antenna rotation matrix<br>
+- Feature: [qd_builder.check_dual_mobility] Automated testing for dual-mobility conformance<br>
+- Feature: [qd_builder.*] Added option for tx mobility<br>
+- [qd_builder.calc_scatter_positions] is now a private method<br>
+- Bugfix: [qd_sos] did not output correct ACF due to wrong scaling<br>
+<br>
+v2.0.1-689<br>
+- Feature: [qd_builder.gen_lsf_parameters] Added option for tx mobility<br>
+- Feature: [qd_builder.get_lsp_val] Added option for tx mobility<br>
+- Feature: [qd_buil der.ge t_pl] Added option for tx mobility<br>
+- Feature: [qd_layout.gen_lsf_parameters]  Added option for tx mobility (unfinished)<br>
+- Feature: [qd_layout.gen_o2i_loss]  Added option for tx mobility <br>
+- Feature: [qd_layout.init_builder]  Added option for tx mobility <br>
+- Feature: [qd_layout.set_scenario]  Added option for tx mobility <br>
+- Bugfix: [qd_track.set_subtrack] Did not return correct result for closed tracks with only one segment<br>
+<br>
+v2.0.1-687<br>
+- Feature: [qd_layout.parse_positions] Functions to extract positioning information from layout including Tx mobility<br>
+- Feature: [qd_track.get_subtrack] Added option to extract data for specific transmitters<br>
+<br>
+v2.0.1-683<br>
+- Feature: [qd_array] Added export function to write array response to text file<br>
+- Feature: [qd_array] Added center frequency property<br>
+- Feature: [qd_layout] Added support for tx mobility<br>
+- Feature: [qd_layout.set_scenario] Added spatial consistency for LOS/NLOS state for mobile Tx<br>
+- Feature: [qd_sos] Added support for dual mobility<br>
+- Bugfix: [qd_channel.interpolate] crashed when delay were fixed<br>
+<br>
+v2.0.1-677<br>
+- Bugfix: [qd_layout.set_scenario] crashed when incorrect number of BSs was given in track segments.<br>
+- Bugfix: [+qf.interp] Missing type declaration when creating the output matrix (crashed in Octave)<br>
+- Bugfix: [qd_channel.interpolate] Missing type declaration when creating the output matrix using linear interpoaltion (crashed in Octave)<br>
+- Bugfix: [qd_layout.get_channels] Channel interpolation crashed when using closed tracks <br>
+- Feature: [qd_channel.combine_tx_rx] : combines channels from a qd_channel array into a single object<br>
+- Added "center_frequency" property to class qd_channel.<br>
+- Extension: Added propsim export method to class "qd_channel".<br>
+- Extension: Added "quantize_delays" method to class "qd_channel".<br>
+<br>
+v2.0.0-670<br>
+- Bugfix: [qd_channel.interpolate] Fixed moving taps when interpolating channels with birth/death of taps.<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v2.0.0-664</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2017-08-01)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+Major update and redesign.<br><br>
+
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v1.4.8-571</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2016-08-05)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+
+v1.4.8-571<br>
+- Bugfix: [array.generate_multi]  There was a sign error in the array generation function for electric tilt angles<br>
+<br>
+
+v1.4.7-570<br>
+- Bugfix: [channel_builder/get_channels] Wrong antenna response was created when using drifting precision 0 (only affects version 1.4.5 and 1.4.6)<br>
+- Performace [array/generate] 3GPP-3D antenna array generation function was inefficient<br>
+<br>
+
+v1.4.5-568<br>
+- Bugfix: [channel_builder/get_channels] Fading of clusters was effectively removed by averaging the power in version v1.3.11-538. This is fixed by a new power-scaling function.<br>
+<br>
+
+v1.4.5-567<br>
+- Feature: Added support for the ground reflection (2-Ray model)<br>
+- Feature: Added config-file for Freespace propagation<br>
+- Update: [channel_builder/init_parameters] Fixed LOS pahse to 0 and ground reflection phase to 180 degree<br>
+- Update: [channel_builder/private/update_angles] Redesign of the "rescale_departure_angles" function<br>
+- Update: Set default intra-cluster angular spreads to 0<br>
+<br>
+
+v1.4.4-566<br>
+- Bugfix: [array.interpolate] crashed when requested agnles for the interpolater were outside the provided angle range in the patterns.<br>
+- Bugfix: [array.visualize] Crashed when single precision patters were provided.<br>
+- Feature: [layout.visualize] Added option to show the Rx numbers.<br>
+<br>
+
+v1.4.3-557<br>
+- Bugfix: [array.set_grid] crashed when the array object only defines a partial angle range and the interpolation was outside this range<br>
+- Bugfix: [layout.get_channels] Crashed while checking the sampling theorem consistency when more than one track was given.<br>
+- Feature: [array.visualize] now returns the figure handle for further image manipulation<br>
+<br>
+
+v1.4.2-556<br>
+- Bugfix: [layout.get_channels] now checks if the sampling theorem is met and adjusts the sample density automatically if a movement profile is given (i.e. by call track.set_speed). <br>
+<br>
+
+v1.4.1-555<br>
+- Feature: [layout.get_channels] now interpolates [par.pg] when speed profiles are provided.<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v1.4.1-551</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2016-03-22)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+v1.4.1-551<br>
+- Bugfix: [channel] Setting new coefficients "channel.coeff = X" set the delays to 0 in some cases.<br>
+- Feature: [channel_builder.get_channels] Store LSPs and SSPs used for coefficient generation to "channel.par"<br>
+- Feature: Added "qf" package for commonly used helper functions.<br>
+<br>
+
+v1.4.0-547<br>
+- Feature: Added initial mmMAGIC LOS probability model and parameters<br>
+- Moved commonly used helper functions to folder "+qf"<br>
+<br>
+
+v1.3.12-545<br>
+- Bugfix: [parameter_set.get_sf_profile] crashed when parameters were given in "track.par", but no map was available in "parameter_set"<br>
+- Bugfix: [array.generte_multi] There was a missing "sin" in the weight calculation.<br>
+- Bugfix: [channel_builder.visualize_clusters] displayed garbage when more than one subpath were selected.<br>
+- Feature: [parameter_set.scenpar] Added additional parameters for scaling of LSPs with frequency<br>
+- Feature: Added support for scaling LSPs with frequency in channel builder and map generation<br>
+- Feature: [layout.randomize_rx_positions] Added option to create only a subset of positions<br>
+- Performance: [channel.merge] Speedup for channels with only one segment<br>
+- Refined 3GPP-3D configuration files<br>
+<br>
+
+v1.3.11-538<br>
+- Bugfix: [channel_builder.get_channels] Crashed with multiple UEs per CB and drifting_precision >= 4<br>
+- Bugfix: [channel_builder.get_channels] Causes wrong power-scaling when WINNER-polarization model was used (adding random phases)<br>
+- Feature: [layout.generate] Added options to create regular layouts with 37 sites (3 rings of interferers)<br>
+- Performance: [channel.merge] Speedup for channels with only one segment<br>
+- Performance: [layout.create_parameter_sets] Now runs faster if same scenarios get assigned to different BS<br>
+<br>
+
+v1.3.10-536<br>
+- Bugfix: [layout.create_parameter_sets] Not creating a copy of the track objects (and copying only the handle instead) could lead to wrong LSPs when used in conjunction with "layout.generate_parameters". In this case, the parameters were written to the track objects and subsequently used in "parameter_set.get_sf_profile". <br>
+- Bugfix: [layout.create_parameter_sets] did not process the "xpr"-fields in "track.par" when assigning subtracks to transmitters.<br>
+- Bugfix (minor) [channel_builder.get_channels] Progress bar was inconsistent (number of dots changed depending on the number of BSs)<br>
+- Bugfix (minor) [parameter_set] Progress bar was inconsistent (number of dots changed depending on the number of BSs)<br>
+- Feature: Added distance-dependent elevation-of-departure spread according to 3GPP TR 36.873<br>
+- Feature: Added 3GPP-3D UMi and UMa parameter tables and PL-Models<br>
+- Feature: [array.generate] Added option to set the element spacing for the "3gpp-3d" antenna model.<br>
+- Feature: [channel_builder.get_los_channels] It is now possible to input parameter_set-arrays<br>
+- Feature: [layout.set_scenario] now supports indoor fractions for the 3GPP-3D-UMi and 3GPP-3D-UMa scenarios.<br>
+<br>
+
+v1.3.9-533<br>
+- Feature: Added 3GPP-3D antenna model<br>
+- Feature: Added method [layout.set_scenario] to assign scenarios to users. This implements the distance-dependent LOS probability for 3GPP-3D-UMi and 3GPP-3D-UMa.<br>
+- Feature: [track.set_scenario] Added option to only create segments, but leave the scenario empty.<br>
+- Added parameter files [config] for 3GPP-3D and METIS 50-70 GHz scenarios.<br>
+- Bugfix: Zero-Elevations spreads (2D simulations) caused crash in channel_builder due to division by zero<br>
+- Bugfix: [layout.get_channels] did not return the parameter maps<br>
+- Feature: Setting "simulation_parameters.map_resolution = 0" now allows to automatically choose the optimal map resolution.<br>
+- Feature: Added options in channel objects to store additional evaluation data.<br>
+<br>
+
+v1.3.8-490<br>
+- Bugfix: [channl.split_tx] returned wrong order of channel objects when scenario names were included in channel.name<br>
+- Bugfix: [layout.get_channels] crashed when using non-default paring<br>
+<br>
+
+v1.3.7-485<br>
+- Bugfix: [channel.interpolate] Fixed several bug in the channel interpolation method that could return wrong values<br>
+<br>
+
+v1.3.6-484<br>
+- Updated documentation<br>
+- Performance: [channel.hdf_load] Added persistent storage for the HDF info to significantly reduce loading speeds.<br>
+<br>
+
+v1.3.5-483<br>
+- Feature [channel] Added attribute "pg" to store the average path gain values.<br>
+- Bugfix: [channel.split_tx] crashed due to wrong object initialization.<br>
+- Bugfix: [layout.get_channels] crashed during interpolation when different speed setting was used.<br>
+- Performance: [channel.interpolate] Increased performance when using spline interpolation.<br>
+<br>
+
+v1.3.4-479<br>
+- Bugfix: [array.interpolate] The planar projection of the element positions caused an error when only a subset of the elements is used for interpoaltion.<br>
+- Bugfix: [array.sub_array] Single-precision flag was ignored.<br>
+- Bugfix: [array.set.elevation_grid] Rounding errors could cause error message.<br>
+- Performance: [channel_builder.get_los_channels] Removed unneccessary computaitons.<br>
+<br>
+
+v1.3.3-478<br>
+- Bugfix: [channel_builder.get_channels] Using "drifting_precision = 0" ignored the distance-dependent phase.<br>
+- Bugfix: [channel_builder.get_los_channels] Using "drifting_precision = 0" ignored the distance-dependent phase.<br>
+- Feature: [array] Added option to do array calculations in single precision. This is slightly faster than using double precision. <br>
+- Performance: [channel_builder.get_los_channels] Several performace updates<br>
+- Performance: [array.interpolate] Some small performance updates.<br>
+<br>
+
+v1.3.2-467<br>
+- Feature: [layout.generate] Added regular cell layout with 6 sectors per BS<br>
+- Update: [layout.visualize] Setting the input parameter "show_names" to 0 also disables the tx-names.<br>
+- Performance: [layout.power_map] Some performance improvements<br>
+<br>
+
+v1.3.1-464<br>
+- Bugfix: [array] Array objects did not allow multipe coupling matrices for one pattern.<br>
+- Bugfix: [channel_builder.get_channels] Height direction was not correctly implemented.<br>
+- Performace: [channel_builder.get_los_channels] Added options for single precision computing and unformatted output. This helps to significantly speed up the computations for large data sets.<br>
+- Corrected many typos in the souce code documentation.<br>
+<br>
+
+v1.3.0-460<br>
+- Added Multi-Bounce model<br>
+- Added Massive MIMO parametrization from measurements in downtown Dresden, Germany at 2.6 GHz<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<span style="font-weight: bold;"><br>
+v1.2.32-458</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2015-03-23)<br>
+</span><span style="font-weight: bold;"><br></span>
+<hr style="width: 100%; height: 2px;"><br>
+
+v1.2.32-458<br>
+- Removed HTML Help (Newer MATLAB Versions dont support it anymore)<br>
+- Updated Documentation<br>
+<br>
+
+v1.2.31-457<br>
+- Feature: [channel.split_tx] Added method to split channel objects based on their transmit antenna indices, e.g. to separate the channels from different sectors of a BS.<br>
+- Bugfix: [array.generate_multi] Input conversion of the tilt angle from [deg] to [rad] was wrong.<br>
+- Bugfix: [layout.power_map] The optional input parameters "tx_power" can not be set as a scalar that will be used for all antennas.<br>
+<br>
+
+v1.2.30-456<br>
+- Feature: [layout.get_channels_seg] Added option to return channels segment-wise. This might help to relax memory requirements.<br>
+- Bugfix: [array.generate] returned an error for the "parametric" antenna if no parameters were given.<br>
+- Bugfix: [layout.generate_parameters] returned an error if pairing matrix was not set to default.<br>
+<br>
+
+v1.2.29-448<br>
+- Update: [array] Added geometric option for the calculation of electric downtilts.<br>
+- Update: [array] Added option to define a antenna pattern by a set of parameters ("parametric" antenna).<br>
+<br>
+
+v1.2.29-441<br>
+- Bugfix: Fixed calculation error in "layout.estimate_memory_usage"<br>
+- Feature: [array] Added method to generate multi-element stacked arrays with electrical downtilt.<br>
+- Feature: [array] Added method to concat arrays.<br>
+- Feature: [array] Added method to compress arrays.<br>
+- Feature: [array] Added method to calculate the antenna element gain.<br>
+<br>
+
+v1.2.28-415<br>
+- Bugfix: [array.rotate_pattern] There was an ambiguity at the poles of the pattern.<br>
+- Update: Added [array.import_pattern] again in order to keep compatible with older versions.<br>
+<br>
+
+v1.2.27-413<br>
+- Feature: [array] Added support for different polarization bases: Cartesian, AZ-EL, EL-AZ<br>
+- Feature: [array] Added method to transform polarization bases.<br>
+- Update: Redesigned the "array.visualize" function.<br>
+- Bugfix: "array.combine_pattern" turned the polarization.<br>
+<br>
+
+v1.2.26-410<br>
+- Bugfix: In versions 1.2.23 - 1.2.25, the circular phases were updated for each tx-antenna recursively, causing a phase rotation.<br>
+<br>
+
+v1.2.25-409<br>
+- Bugfix: "channel_builder.get_channels" ; There was a sign-error in the polarization rotation matrix for the receiver.<br>
+<br>
+
+v1.2.24-408<br>
+- Update: Replaced method to calculate effective radiation patterns "combine_patterns" with a more efficient version. <br>
+- Bugfix: "layout.estimate_memory_usage" crashed.<br>
+<br>
+
+v1.2.23-404<br>
+- Update: Changed the method to calculate the polarization rotation. The orientation vector is not needed anymore and the full complex-valued data from the patterns is used in the model core.<br>
+- Feature: Added method to calculate effective radiation patterns from multi-element arrays with fixed phase offset. <br>
+- Feature: Added elevation direction for the track object.<br>
+- Removed method: array.apply_common_phase<br>
+- Removed method: array.estimate_common_phase<br>
+- Removed method: array.estimate_pol_vector<br>
+- Removed method: array.import_pattern<br>
+- Removed property: array.common_phase<br>
+- Removed property: array.pol_vector<br>
+- Removed property: simulation_parameters.drifting_update_threshold<br>
+- Bugfix: Updating the parameter maps did not invalidate the data stored in the parameter_set object. An update did thus not replace the data with the new map.<br>
+<br>
+
+v1.2.22-393<br>
+- Feature: Changed map storage method in parameter_set in order to reduce memory requirement with large layouts. Maps are now stored in single precision. There is one map per parameter. Maps that don't have a variance (i.e. sigma in scenpar is zero) are stored as scalar.<br>
+- Bugfix: The mus and sigma values in the maps got changed slightly after applying the inter-parameter correlation. This was fixed.<br>
+<br>
+
+v1.2.21-382<br>
+- Bugfix: Identical linear cross-polarization values were used for each cluster.<br>
+- Bugxix: WINNER angular mapping function did not correctly apply the departure- and arrival angles for the LOS cluster.<br>
+- Bugfix: WINNER XPOL-Values were not correctly applied to the channel matrix<br>
+<br>
+
+v1.2.20-374<br>
+- Feature: Added option to generate maps using the algorithm from WINNER.<br>
+<br>
+
+v1.2.19-354<br>
+- Feature: Added rescaling of the angles if single-bounce paths were generated in the multi-bounce model.<br>
+- Updated documentation.<br>
+<br>
+
+v1.2.18-353<br>
+- Feature: Added option to select the new or the old (WINNER) angular mapping function. This allows to use QuaDriga also as a WINNER+ reference implementation.<br>
+- Decluttered cluster visualization function.<br>
+<br>
+
+v1.2.17-352<br>
+- Feature: Added method 'channel_builder.calc_scatter_positions' to return the 3-D coordinates of the scatterers.<br>
+- Bugfix: 'update_drifting' had a sign-error that changed the arrival azimuth angles by 180 degrees.<br>
+<br>
+
+v1.2.15-348<br>
+- Feature: Added visualization function for the scattering clusters to the channel builder.<br>
+- Some minor fixes in the drifting module.<br>
+<br>
+
+v1.2.14-347<br>
+- Feature: Added method to 'channel_builder' that initializes the parameters without calculating the channel coefficients.<br>
+- When 'drifting_precision' is set to 4, departure angles in 'channel_builder' are now correctly initialized.<br>
+- Fix: There was a sign-error in the drifting module. However, this had no effect on the results.<br>
+<br>
+
+v.1.2.13-345<br>
+- Fix: Updated method for calculating the departure and arrival angles. The old method had a strong bias when the KF was too big.<br>
+<br>
+
+v1.2.12-340<br>
+- Bugfix: Channel generation crashed when using drifting precision 2 and only one Rx antenna.<br>
+<br>
+
+v1.2.11-338<br>
+- Feature: Added function "layout.estimate_memory_usage" to get an estimate of the required memory of a simulation before running it.<br>
+<br>
+
+v.1.2.10-336<br>
+- Performace: Further reduced memory requirements by up to 75% when using large antenna arrays with spherical wave propagation. <br>
+- Performace: Omitted many unnecessary computations when using spherical wave propagation. Calculations can be up to 50% faster.<br>
+- Bugfix: "drifting_precision = 4" did not use the correct angles for the Tx-array interpolation. <br>
+- Removed support for NLOS-Scattering radius. This feature was untested and unvalidated. A working implementation for fututre reference can be found in Tag "2014.04.30_v1.2.3-307".<br>
+<br>
+
+v1.2.9-335<br>
+- Fix: Reduced memory requirements of "channel_builder.get_channels" by ~60%. This was due to the calculation of all 20 subpaths for each snapshot. The processing is now done per snapshot in realtime.<br>
+- Removed option "simulation_parameters.use_subpath_output". It is no longer possible to return individual subpaths.<br>
+<br>
+
+v1.2.8-333<br>
+- Updated layout/power_map function<br>
+- Updated example section in function description (example was erroneous previously)<br>
+<br>
+
+v1.2.7-332<br>
+- Feature: Added 'rx_height' parameter to layout/power_map function<br>
+- Bugfix: Fixed error in case of unspecified map boundaries<br>
+<br>
+
+v1.2.6-331<br>
+- Fix: Updated definition of "simulation_parameters.drifting_precision". [2] is now strictly for spherical waves at the Rx and planar waves at the Tx. [4] is now for spherical waves at both, Tx and Rx, but without angle mapping.<br>
+- Bugfix: The angular projection in "array.interpolate" ignored the  given element number. That could lead to wrong departure angles in the data if drifting_precision was set to 2 or 3.<br>
+- Bugfix: New delay combining from v1.2.5 function could produce NaN in the delays.<br>
+<br>
+
+v1.2.5-328<br>
+- Update: When setting "channel.individual_delays" from 1 to 0, a power-weighted average of the delays is calculated. Before, only delay of the first MIMO-Link (Tx=1, Rx=1) was used.<br>
+<br>
+
+v1.2.4-327<br>
+- Feature: Added option to interpolate channels for each antenna element separately<br>
+- Fix: "track.interpolate_positions" could decrease the sampling rate when trying to match start and end pints of a track. Now, the sampling is increased (i.e. more samples are added), but never decreased.<br>
+- Fix: "track.interpolate_movement" now strictly uses the given sampling rate.<br>
+<br>
+
+
+v1.2.3-307<br>
+- Bugfix: Setting path to config file in track objects did not work.<br>
+<br>
+
+v1.2.2-305<br>
+- Exchanged correction function for RMS-Angular spread<br>
+<br>
+
+v1.2.1-301<br>
+- Bugfix: Channel Builder created too large angular spreads.<br>
+- Bugfix: Setting path to config file in track objects did not work.<br>
+<br>
+<br>
+
+
+<hr style="width: 100%; height: 2px;">
+
+
+<span style="font-weight: bold;"><br>
+v1.2.0-283</span><br style="font-weight: bold;">
+<span style="font-weight: bold;">(Release: 2014-02-19)<br>
+</span><span style="font-weight: bold;"><br>
+</span>
+
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"><br>
+</span>v1.2.0-283<br>
+- Bugfix: XPR in output channel coefficients did not match the given
+value in the parameter set when
+"simulation_parameters.use_polarization_rotation" was set to 2.<br>
+<br>
+v1.1.4-272<br>
+- Bugfix: NLOS-Circular XPR was asymmetric for LHCP and RHCP<br>
+- Bugfix: The antenna gain was calculated wrong in "array.visualize" when complex valued field patterns were used.<br>
+<br>
+v1.1.3-268<br>
+- Added "xpr" to track.par<br>
+- Bugfix: "parameter_set.update_parameters" did not select the right
+row from "track.par" if more that one transmitter is present and the
+manual parameter mode was used.<br>
+- Bugfix: "layout.create_parameter_sets(0)" used random variables even if no parameters were generated.<br>
+- Bugfix: "parameter_set.update_parameters" used random variables even if no parameters were generated.<br>
+<br>
+v1.1.2-267<br>
+- Removed "channel.copy_objects"<br>
+- Removed "layout.winner_compatible_output"<br>
+- Bugfix: layout.generate_parameters crashed when shortnames were used<br>
+- Feature: Added "tx_power" option to "layout.power_map"<br>
+- Feature: Added shadow-fading mode to "layout.set_pairing"<br>
+- Update of the documentation<br>
+- Added unit test for "layout.set_pairing"<br>
+<br>
+v1.1.1-266<br>
+- Feature: Added link selection by power level to "layout.set_pairing"<br>
+- Feature: Added the option to have different scenarios for each Tx in "layout.power_map"<br>
+- Performance: Added shortname processing to "layout.create_parameter_sets"<span style="font-weight: bold;"><br>
+<br>
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"><br>
+v1.1.0-263</span><br style="font-weight: bold;">
+
+
+<span style="font-weight: bold;">(Release: 2014-01-14)<br>
+</span><span style="font-weight: bold;"><br>
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span><span style="font-weight: bold;"><br>
+</span>v1.1.0-263<br>
+- Updated help files<br>
+- Bugfix: track.set_scenario crashed with only one segment when "create_segments" was enabled<br>
+<br>
+v1.1.0-261<br>
+- Bugfix: Due to false normalization of the radiation field patterns,
+the antenna gains were wrong, at least for dipoles and custom antennas.<br>
+- Feature: added two new supported array types: 'short-dipole' and
+'half-wave_dipole', due to backward compatibility 'dipole' still exists
+and is the same as 'short-dipole'<br>
+- Feature: Added Rx orientation to "channel_builder.get_los_channels"<br>
+- Feature: Added warning message to "channel_builder.get_los_channels" if "parset.rx_array" has more than one antenna object<br>
+- Feature: Added simplified interface to "parameter_set.update_parameters"<br>
+- Feature: Added parsing of MI-index to "parameter_set.get_pl"<br>
+- Removed "array.winner_compatible_output"<br>
+- Removed "channel_builder.winner_compatible_bulkpar"<br>
+- Removed "channel_builder.set_rx_array"<br>
+- Moved "parameter_set.set_LSP_xcorr_matrix" functionality to "parameter_set.set_par"<br>
+- Moved "parameter_set.set_scenpar" functionality to "parameter_set.set_par"<br>
+- Updated documentation of "channel_builder"<br>
+- Updated documentation of "parameter_set"<br>
+<br>
+v1.0.16-244<br>
+- Bugfix: Output XPR values did not match the give XPR<br>
+- Bugfix: channel.get_version crashed when called on a channel array<br>
+- Added private function "generate_initial_xpr" to channel builder<br>
+- Added property "random_pol" to channel builder for processing the WINNER polarization method<br>
+- Added property "xpr" to parameter set<br>
+- Set default polarization method to 2<br>
+<br>
+v1.0.15-240<br>
+- Feature: Config files can be loaded from current working directory.<br>
+<br>
+v1.0.14-238<br>
+- Bugfix: Calling array constructor did not correctly pass arguments to "array.generate"<br>
+<br>
+v1.0.13-235<br>
+- Feature: Added "layout.set_satellite_pos" to calculate TX coordinates for a given satellite orbital position<br>
+- Feature: Added "street"-grid generator to "track.generate"<br>
+- Feature: Added automatic generation of segments along a longer track to "track.set_scenario"<br>
+<br>
+v1.0.12-231<br>
+- Bugfix: MATLAB did not free memory upon clearing an object.<br>
+<br>
+v1.0.11-219<br>
+- Update: Added optional function to "array.import_pattern" to
+calibrates the phase of the pattern. A common phase offset on both
+polarizations is detected and removed.<br>
+- Update: Added alphabetical sorting at the output of "channel.merge".<br>
+- Update: Added option to calculate the phase in "layout.power_map".<br>
+- Update: "layout" now throws an error if Tx or Rx names are not unique.<br>
+- Feature: Added new method for the polarization calculation.
+"simpar.use_polarization_rotation = 3" now uses Pol-Rot. for the
+geometric pol. and WINNER method for the NLOS components.<br>
+<br>
+v1.0.10-218<br>
+- Feature: Added import function of arbitrary antenna patterns<br>
+- Update: Removed "rhcp-lhcp-dipole" and added "lhcp-rhcp-dipole" to default antenna list. Fixed confusen in LHCP and RHCP.<br>
+- Update: Chnged cost function in "array.estimate_pol_vector" to match cost function of "array.import_pattern"<br>
+- Bugfix: "array.visualize" crashed when patterns are "0"<br>
+<br>
+v1.0.9-216<br>
+- Bugfix: channel.merge crashed when only one path was present<br>
+- Bugfix: layout.power_map changed value of simulation_parameters.drifting_precision<br>
+- Update: Changed layout.power_map to return maps for each antenna-pair separately<br>
+- Update: Changed "track" interface to preserve scenario information when updating segments<br>
+- Added unit test for channel merger<br>
+<br>
+v1.0.8-194<br>
+- Bugfix: Manual parameter inferface could apply path gain twice<br>
+<br>
+v1.0.7-191<br>
+- Bugfix: Deleys could be initialized wrongly when setting drifting precision to 2 or 3<br>
+- Set LOS-scatter radius in all config-files to 0 (this feature was not part of WINNER and needs further testing)<br>
+<br>
+v1.0.6-174<br>
+- Bugfix: channel_builder.get_los_channels ignored array geometry<br>
+- Bugfix: fixed a bug, which occurred in the spline_2d function in case
+there is only a single user and the subset of the maps is only 4
+samples wide, by increasing the size of the map subset by a sample in
+each direction<br>
+- Changed structure in "simulation_parameters" class definition<br>
+<br>
+v1.0.5-161<br>
+- Bugfix: Default Tx names now have the format "Tx01" instead of "Tx1".
+This caused the channels to be out of order when morae then 10 Txs were
+used.<br>
+<br>
+v1.0.4-153<br>
+- Feature: Speed profiles are now processed automatically in "layout.get_channels"<br>
+<br>
+v1.0.3-152<br>
+- Feature: Manual Parameter Interface<br>
+- Bugfix: Setting the individual-delays flag in "channel"-objects failed for SISO channels<br>
+- Performance: Added option to skip in-depth checking of config-files <br>
+- Improved comments and variable names in "channel.merge"<br>
+- Moved SF-scaling into "parameter_set.get_pl"<br>
+- Moved 2D spline interpolation in "parameter_set" into a separate subfunction<br>
+- "parameter_set" now uses the same spline interpolation for "update_parameters" and "get_sf_profile"<br>
+<br>
+v1.0.2-146<br>
+- Feature: Added support for short names in config files.<br>
+<br>
+v1.0.1-145<br>
+- Bugfix (major): K-Factor variations also scale shadow fading (error in KF-implementation)<br>
+- Bugfix (minor): WINNER path loss formula now uses ground distance<br>
+- Bugfix (minor): WINNER path loss formula now ignores MT heights lower than 1.5 m (no NaNs in output anymore)<br>
+- Bugfix (minor): layout.get_channels ignored "show_progress_bars"<br>
+- Feature: Disabling track names in "layout.visualize" is now possible (less clutter)<br>
+- Added config-files from WINNER+ and MIMOSA<br><span style="font-weight: bold;"><br>
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"><br>
+v1.0.0-139</span><br style="font-weight: bold;">
+
+<span style="font-weight: bold;">(Release: 2013-01-13)<br>
+</span><br>
+<hr style="width: 100%; height: 2px;">QuaDRiGa Copyright (C) 2011-2015
+Fraunhofer Heinrich Hertz Institute<br>
+e-mail: quadriga@hhi.fraunhofer.de<br>
+<br>
+Fraunhofer Heinrich Hertz Institute<br>
+Wireless Communication and Networks<br>
+Einsteinufer 37, 10587 Berlin, Germany<br>
+&nbsp;
+<br>
+This program is free software: you can redistribute it and/or modify<br>
+it under the terms of the GNU Lesser General Public License as
+published by<br>
+the Free Software Foundation, either version 3 of the License, or<br>
+(at your option) any later version.<br>
+&nbsp;<br>
+This program is distributed in the hope that it will be useful,<br>
+but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&nbsp; See the<br>
+GNU General Public License for more details.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+You should have received a copy of the GNU General Public License<br>
+along with this program.&nbsp; If not, see
+&lt;http://www.gnu.org/licenses/&gt;.<br>
+
+</body></html>

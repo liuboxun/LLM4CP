@@ -1,0 +1,76 @@
+Software License for The QuaDRiGa Channel Model 
+© Copyright 2011 - 2019 Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. 
+All rights reserved.
+
+1. INTRODUCTION
+
+The Quadriga Channel Model ("QuaDRiGa") is used for generating realistic radio channel impulse 
+responses for system-level simulations of mobile radio networks. These simulations are used to 
+determine the performance of new technologies in order to provide an objective indicator for the 
+standardization process in bodies like the third generation partnership program 3GPP.
+
+Quadriga was developed at Fraunhofer HHI to enable the modeling of MIMO radio channels for specific 
+network configurations, such as indoor, satellite or heterogeneous configurations. Besides being a 
+fully-fledged three dimensional geometry-based stochastic channel model, QuaDRiGa contains a 
+collection of features created in SCM(e) and WINNER channel models along with novel modeling 
+approaches which provide features to enable quasi-deterministic multi-link tracking of users 
+(receiver) movements in changing environments.
+
+2. COPYRIGHT LICENSE
+
+Redistribution and use of QuaDRiGa in source, with or without modification, are permitted without 
+payment of copyright license fees provided that you satisfy the following conditions: 
+
+   a. Use QuaDRiGa only for non-commercial purposes. Non-commercial usage in the context of this 
+      license is especially the use of QuaDRiGa for scientific, education or standardization 
+      purposes. 
+
+   b. You must retain the complete text of this software license in redistributions of QuaDRiGa or 
+      your modifications thereto in source code form.
+
+   c. You must make available free of charge copies of the complete source code of the QuaDRiGa and 
+      your modifications thereto to recipients of copies in binary form. The name of Fraunhofer may 
+      not be used to endorse or promote products derived from this library without prior written 
+      permission.
+
+   d. You may not charge copyright license fees for anyone to use, copy or distribute the QuaDRiGa 
+      software or your modifications thereto.
+
+   e. Your modified versions of the QuaDRiGa must carry prominent notices stating that you changed 
+      the software and the date of any change. For modified versions of the QuaDRiGa, the term 
+      "Fraunhofer QuaDRiGa" must be replaced by the term "Third-Party Modified Version of the 
+      Fraunhofer QuaDRiGa.".
+
+You may add your own copyright statement to your modifications and may provide additional or 
+different license terms and conditions for use, reproduction, or distribution of your modifications, 
+or for any such Derivative Works as a whole, provided your use, reproduction, and distribution of 
+the Work otherwise complies with the conditions stated in this License.
+
+3. NO PATENT LICENSE
+
+NO EXPRESS OR IMPLIED LICENSES TO ANY PATENT CLAIMS, including without limitation the patents of 
+Fraunhofer, ARE GRANTED BY THIS SOFTWARE LICENSE. Fraunhofer provides no warranty of patent 
+non-infringement with respect to this software. You may use Qaudriga or modifications thereto only 
+for purposes that are authorized by appropriate patent licenses.
+
+4. DISCLAIMER
+
+This Quadriga software is provided by Fraunhofer on behalf of the copyright holders and contributors 
+"AS IS" and WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES, including but not limited to the implied 
+warranties of merchantability and fitness for a particular purpose. IN NO EVENT SHALL THE COPYRIGHT 
+HOLDER OR CONTRIBUTORS BE LIABLE for any direct, indirect, incidental, special, exemplary, or 
+consequential damages, including but not limited to procurement of substitute goods or services; 
+loss of use, data, or profits, or business interruption, however caused and on any theory of 
+liability, whether in contract, strict liability, or tort (including negligence), arising in any 
+way out of the use of this software, even if advised of the possibility of such damage.
+
+
+5. CONTACT INFORMATION
+
+Fraunhofer Heinrich Hertz Institute
+Attention: Wireless Communications and Networks Department
+Einsteinufer 37
+10587 Berlin, Germany
+
+http://quadriga-channel-model.de 
+quadriga@hhi.fraunhofer.de

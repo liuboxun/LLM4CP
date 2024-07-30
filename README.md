@@ -14,7 +14,8 @@ The datasets used in this paper can be downloaded in the following links.
 [[Training Dataset]](https://pan.baidu.com/s/19DtLPftHomCb6_1V2lREtw?pwd=3gbv)
 [[Testing Dataset]](https://pan.baidu.com/s/10KzmwC1jncozOGNZ02Hlaw?pwd=sxfd)
 
- 
+## Dataset Generation
+We generate dataset via [QuaDRiGa](https://quadriga-channel-model.de/). To assist researchers in the field of channel prediction, we have provided a runnable demo file in the `data_generation` folder. For more detailed information about the QuDRiGa generator, please refer to its user documentation `uadriga_documentation_v2.8.1-0.pdf`.
 
 
 ## Get Started
