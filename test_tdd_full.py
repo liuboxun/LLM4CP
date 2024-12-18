@@ -17,13 +17,12 @@ import tqdm
 from pvec import pronyvec
 from PAD import PAD3
 
-
 if __name__ == "__main__":
     # demo
     device = torch.device('cuda:1')
     is_U2D = 0
-    prev_path = "./test_data/H_U_his_test.mat"      # path of dataset [H_U_his_test]
-    pred_path = "./test_data/H_U_pre_test.mat"      # path of dataset [H_U_pre_test]
+    prev_path = "./test_data/H_U_his_test.mat"  # path of dataset [H_U_his_test]
+    pred_path = "./test_data/H_U_pre_test.mat"  # path of dataset [H_U_pre_test]
     pred_path_fdd = "./test_data/H_D_pre_test.mat"  # path of dataset [H_D_pre_test]
     model_path = {
         'gpt': './Weights/full_shot_tdd/U2U_LLM4CP.pth',
@@ -37,11 +36,13 @@ if __name__ == "__main__":
     prev_len = 16
     label_len = 12
     pred_len = 4
-    K, Nt, Nr, SR = (48, 4, 4, 1)
+    K, Nt, Nr, SR = (48, 16, 1, 1)
     print("Total model nums:", len(model_test_enable))
     # load model and test
     criterion = NMSELoss()
+    criterion_se = SE_Loss(snr=10, device=device)
     NMSE = [[] for i in model_test_enable]
+    SE = [[] for i in model_test_enable]
     test_data_prev_base = hdf5storage.loadmat(prev_path)['H_U_his_test']
     if is_U2D:
         test_data_pred_base = hdf5storage.loadmat(pred_path_fdd)['H_D_pre_test']
@@ -82,10 +83,10 @@ if __name__ == "__main__":
                         if model_test_enable[i] == 'gpt':
                             out = model(prev, None, None, None)
                         elif model_test_enable[i] == 'transformer':
-                            encoder_input = prev  
+                            encoder_input = prev
                             dec_inp = torch.zeros_like(encoder_input[:, -pred_len:, :]).to(device)
                             decoder_input = torch.cat([encoder_input[:, prev_len - label_len:prev_len, :], dec_inp],
-                                                      dim=1)  
+                                                      dim=1)
                             out = model(encoder_input, decoder_input)
                         elif model_test_enable[i] in ['lstm', 'rnn', 'gru']:
                             out = model(prev, pred_len, device)
@@ -94,9 +95,18 @@ if __name__ == "__main__":
                         elif model_test_enable[i] == 'np':
                             out = prev[:, [-1], :].repeat([1, pred_len, 1])
                         loss = criterion(out, pred)
+                        out = rearrange(out, '(b m) l k -> b l (k m)', b=bs)
+                        pred = rearrange(pred, '(b m) l k -> b l (k m)', b=bs)
+                        se, se0 = criterion_se(h=Transform_TDD_FDD(out, Nt=4*4, Nr=1),
+                                               h0=Transform_TDD_FDD(pred, Nt=4*4, Nr=1))
                         test_loss_stack.append(loss.item())
-                print("speed", (speed+1)*10, ":  NMSE:", np.nanmean(np.array(test_loss_stack)))
+                        test_loss_stack_se.append(se.item())
+                        test_loss_stack_se0.append(se0.item())
+                print("speed", speed, ":  NMSE:", np.nanmean(np.array(test_loss_stack)),
+                      "SE:", -np.nanmean(np.array(test_loss_stack_se)), "SE0:", -np.nanmean(np.array(test_loss_stack_se0)),
+                      "SE_per", np.nanmean(np.array(test_loss_stack_se)) / np.nanmean(np.array(test_loss_stack_se0)))
                 NMSE[i].append(np.nanmean(np.array(test_loss_stack)))
+                SE[i].append(np.nanmean(np.array(test_loss_stack_se)) / np.nanmean(np.array(test_loss_stack_se0)))
             elif model_test_enable[i] in ['pad', 'pvec']:
                 cycle_times = lens
                 for cyt in range(cycle_times):
@@ -112,12 +122,18 @@ if __name__ == "__main__":
                         # outputs_AR_freq
                         out = pronyvec(prev, p=8, startidx=prev_len, subcarriernum=K, Nr=Nr, Nt=Nt,
                                        pre_len=pred_len)
-                    out = LoadBatch_ofdm_1(out) 
+                    out = LoadBatch_ofdm_1(out)
                     pred = LoadBatch_ofdm_1(pred)
                     loss = criterion(out, pred)
+                    se, se0 = criterion_se(h=Transform_TDD_FDD(out, Nt=4*4, Nr=1), h0=Transform_TDD_FDD(pred, Nt=4*4, Nr=1))
                     test_loss_stack.append(loss.item())
-                print("speed:", (speed+1)*10, ":  NMSE:", np.nanmean(np.array(test_loss_stack)))
+                    test_loss_stack_se.append(se.item())
+                    test_loss_stack_se0.append(se0.item())
+                print("speed", speed, ":  NMSE:", np.nanmean(np.array(test_loss_stack)),
+                      "SE:", -np.nanmean(np.array(test_loss_stack_se)), "SE0:", -np.nanmean(np.array(test_loss_stack_se0)),
+                      "SE_per", np.nanmean(np.array(test_loss_stack_se)) / np.nanmean(np.array(test_loss_stack_se0)))
                 NMSE[i].append(np.nanmean(np.array(test_loss_stack)))
+                SE[i].append(np.nanmean(np.array(test_loss_stack_se)) / np.nanmean(np.array(test_loss_stack_se0)))
 
     fout_nmse = open(time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime()) + "_data_nmse_tdd_full.csv", "w")
     for row in NMSE:
@@ -125,4 +141,3 @@ if __name__ == "__main__":
         fout_nmse.write(','.join(row))
         fout_nmse.write('\n')
     fout_nmse.close()
-
