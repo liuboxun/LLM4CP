@@ -1,4 +1,4 @@
-# LLM4CP: Adapting Large Language Models for Channel Prediction
+# LLM4CP
 B. Liu, X. Liu, S. Gao, X. Cheng and L. Yang, "LLM4CP: Adapting Large Language Models for Channel Prediction," in Journal of Communications and Information Networks, vol. 9, no. 2, pp. 113-125, June 2024, doi: 10.23919/JCIN.2024.10582829. [[paper]](https://ieeexplore.ieee.org/document/10582829)
 <br>
 
